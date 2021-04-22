@@ -41,15 +41,15 @@
         <foreach item="id" collection="list" open="(" separator="," close=")">
             #{id, jdbcType=VARCHAR}
         </foreach>
-        and user_id = #{userId, jdbcType=String}
+        and user_id = #{userId, jdbcType=VARCHAR}
     </delete>
 
     <delete id="deleteByUserId">
-        delete from data_permission where user_id = #{userId, jdbcType=String}
+        delete from data_permission where user_id = #{userId, jdbcType=VARCHAR}
     </delete>
 
     <delete id="deleteByDataId">
-        delete from data_permission where data_id = #{dataId, jdbcType=String}
+        delete from data_permission where data_id = #{dataId, jdbcType=VARCHAR}
     </delete>
 
     <select id="listByUserId" resultMap="BaseResultMap">
