@@ -41,7 +41,7 @@ public interface DataPermissionMapper {
     List<DataPermissionDO> listByUserId(String userId);
 
     /**
-     * delete data permission by user id and data id.
+     * deleteSelector data permission by user id and data id.
      * @param dataId data id
      * @param userId user id
      * @return effect rows count
@@ -49,21 +49,21 @@ public interface DataPermissionMapper {
     int deleteByDataIdAndUserId(String dataId, String userId);
 
     /**
-     * delete data permission by user id.
+     * deleteSelector data permission by user id.
      * @param userId user id
      * @return int
      */
     int deleteByUserId(String userId);
 
     /**
-     * delete data permission by data id.
+     * deleteSelector data permission by data id.
      * @param dataId data id
      * @return int
      */
     int deleteByDataId(String dataId);
 
     /**
-     * delete by list of data ids and user id.
+     * deleteSelector by list of data ids and user id.
      * @param dataIdsList data ids list
      * @param userId user id
      * @return int
@@ -76,4 +76,15 @@ public interface DataPermissionMapper {
      * @return int
      */
     int insertSelective(DataPermissionDO dataPermissionDO);
+
+    /**
+     * select data ids via list of data id and user id.
+     * @param dataIds selector or rule id
+     * @param userId user id
+     * @param dataType data type
+     * @return {@linkplain List}
+     */
+    List<String> selectDataIdsByDataIdsAndUserId(@Param("list") List<String> dataIds,
+                                                 @Param("userId") String userId,
+                                                 @Param("dataType") Integer dataType);
 }
