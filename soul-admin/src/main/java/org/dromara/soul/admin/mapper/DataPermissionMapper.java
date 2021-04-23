@@ -44,9 +44,12 @@ public interface DataPermissionMapper {
      * deleteSelector data permission by user id and data id.
      * @param dataId data id
      * @param userId user id
+     * @param dataType data type
      * @return effect rows count
      */
-    int deleteByDataIdAndUserId(String dataId, String userId);
+    int deleteByUniqueKey(@Param("dataId") String dataId,
+                          @Param("userId") String userId,
+                          @Param("dataType") Integer dataType);
 
     /**
      * deleteSelector data permission by user id.
@@ -66,9 +69,12 @@ public interface DataPermissionMapper {
      * deleteSelector by list of data ids and user id.
      * @param dataIdsList data ids list
      * @param userId user id
+     * @param dataType data type
      * @return int
      */
-    int deleteByDataIdsAndUserId(@Param("list") List<String> dataIdsList, @Param("userId") String userId);
+    int deleteByDataIdsAndUserId(@Param("list") List<String> dataIdsList,
+                                 @Param("userId") String userId,
+                                 @Param("dataType") Integer dataType);
 
     /**
      * insert data permission.
@@ -84,7 +90,18 @@ public interface DataPermissionMapper {
      * @param dataType data type
      * @return {@linkplain List}
      */
-    List<String> selectDataIdsByDataIdsAndUserId(@Param("list") List<String> dataIds,
-                                                 @Param("userId") String userId,
-                                                 @Param("dataType") Integer dataType);
+    List<String> selectDataIds(@Param("list") List<String> dataIds,
+                               @Param("userId") String userId,
+                               @Param("dataType") Integer dataType);
+
+    /**
+     * find one by unique key.
+     * @param dataId data id
+     * @param userId user id
+     * @param dataType data type
+     * @return {@linkplain DataPermissionDO}
+     */
+    DataPermissionDO findOneByUniqueKey(@Param("dataId") String dataId,
+                                        @Param("userId") String userId,
+                                        @Param("dataType") Integer dataType);
 }

@@ -71,4 +71,18 @@ public interface DataPermissionService {
      * @return {@linkplain CommonPager}
      */
     CommonPager<DataPermissionPageVO> listRulesByPage(RuleQuery ruleQuery, String userId);
+
+    /**
+     * create rule data permission.
+     * @param dataPermissionDTO {@linkplain DataPermissionDTO}
+     * @return effect rows
+     */
+    int createRule(DataPermissionDTO dataPermissionDTO);
+
+    /**
+     * delete rule data permission.
+     * @param dataPermissionDTO {@linkplain DataPermissionDTO}
+     * @return effect rows
+     */
+    int deleteRule(DataPermissionDTO dataPermissionDTO);
 }

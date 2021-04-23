@@ -117,4 +117,29 @@ public class DataPermissionController {
                 .orElse(SoulAdminResult.error(SoulResultMessage.DELETE_SUCCESS));
 
     }
+
+    /**
+     * Delete rule data permission.
+     * @param dataPermissionDTO {@linkplain DataPermissionDTO}
+     * @return effect rows count
+     */
+    @PostMapping("/rule")
+    public SoulAdminResult saveRule(@RequestBody final DataPermissionDTO dataPermissionDTO) {
+        return Optional.ofNullable(dataPermissionDTO)
+                .map(item -> SoulAdminResult.success(SoulResultMessage.SAVE_SUCCESS, dataPermissionService.createRule(dataPermissionDTO)))
+                .orElse(SoulAdminResult.error(SoulResultMessage.SAVE_FAILED));
+    }
+
+    /**
+     * Delete selector data permission.
+     * @param dataPermissionDTO {@linkplain DataPermissionDTO}
+     * @return effect rows count
+     */
+    @DeleteMapping("/rule")
+    public SoulAdminResult deleteRule(@RequestBody final DataPermissionDTO dataPermissionDTO) {
+        return Optional.ofNullable(dataPermissionDTO)
+                .map(item -> SoulAdminResult.success(SoulResultMessage.DELETE_SUCCESS, dataPermissionService.deleteRule(dataPermissionDTO)))
+                .orElse(SoulAdminResult.error(SoulResultMessage.DELETE_SUCCESS));
+
+    }
 }
